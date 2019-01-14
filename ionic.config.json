@@ -1,5 +1,7 @@
 {
   "name": "Tekken",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
