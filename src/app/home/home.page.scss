@@ -1,4 +1,21 @@
-.welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-header{
+    --ion-background-color:#91221e;
+}
+
+ion-segment{
+  background-color:#91221e !important;
+}
+
+ion-content{
+  --ion-background-color:#5b5959;
+}
+
+ion-card{
+  width: 100%;
+  margin-left: 0%;
+}
+
+ion-img{
+  width: 50px;
+  height: 50px;
 }

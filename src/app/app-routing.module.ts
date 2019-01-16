@@ -7,17 +7,29 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+
+  { 
+    path: 'login', 
+    loadChildren: './autentication/login/login.module#LoginPageModule' 
+  },
+
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
+  
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
+
   { 
-    path: 'login', 
-    loadChildren: './autentication/login/login.module#LoginPageModule' 
+    path: 'mis-personajes', 
+    loadChildren: './mis-personajes/mis-personajes.module#MisPersonajesPageModule' 
+  },
+  { 
+    path: 'personaje', 
+    loadChildren: './personaje/personaje.module#PersonajePageModule' 
   }
 ];
 

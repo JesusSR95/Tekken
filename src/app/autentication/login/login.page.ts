@@ -39,7 +39,7 @@ export class LoginPage {
           picture: user.imageUrl
         })
         .then(() => {
-           this.router.navigate(["/user"]);
+           this.router.navigate(["/home"]);
         }, (error) => {
           console.log(error);
         })
