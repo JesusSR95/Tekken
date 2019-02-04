@@ -27,10 +27,8 @@ const routes: Routes = [
     path: 'mis-personajes', 
     loadChildren: './mis-personajes/mis-personajes.module#MisPersonajesPageModule' 
   },
-  { 
-    path: 'personaje', 
-    loadChildren: './personaje/personaje.module#PersonajePageModule' 
-  }
+  { path: 'personaje', loadChildren: './personaje/personaje.module#PersonajePageModule' },
+  { path: 'combos', loadChildren: './combos/combos.module#CombosPageModule' }
 ];
 
 @NgModule({

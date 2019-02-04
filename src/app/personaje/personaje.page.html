@@ -1,20 +1,59 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>personaje</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-icon name="arrow-back" style="color:rgb(241, 229, 229)" (click)="dismiss()"></ion-icon>
+            <ion-title style="color:rgb(156, 132, 132)">{{this.Nombre}}</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
-
-<ion-content padding>
+<ion-content>
     <ion-card>
-        <ion-img src=""></ion-img>
+        <ion-img class="perfil" src="{{this.Foto}}"></ion-img>
         <ion-card-header>
-            <ion-card-title>Nombre</ion-card-title>
+            <ion-buttons>
+                <ion-card-title style="color:rgb(230, 213, 213)">{{this.Nombre}}</ion-card-title>
+                <ion-icon name="heart" [ngStyle]="{'color': getColor()}" (click)="presentToast()"></ion-icon>
+                <ion-icon *ngIf="favorito" name="trash" (click)="presentAlertConfirm()"></ion-icon>
+            </ion-buttons>
         </ion-card-header>
         <ion-card-content>
-            <p>Descripcion</p>
+            <p style="color:rgb(230, 213, 213)">{{this.Descripcion}}</p>
         </ion-card-content>
     </ion-card>
-    <ion-card>
-      <ion-label>Combo 1</ion-label>
-    </ion-card>
+    <!-- <ion-img src="{{this.Combo1}}"></ion-img> -->
+    <ion-segment [(ngModel)]="category" (ionChange)="slides.slideTo(category)">
+        <ion-segment-button layout="icon-start" value="0">
+            <ion-label>{{"photo"|translate}}</ion-label>
+        </ion-segment-button>
+        <ion-segment-button layout="icon-start" value="1">
+            <ion-label>Combos</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+    <ion-slides #slides (ionSlideTransitionStart)="updateIndicatorPosition();updateCat(slides.getActiveIndex())"
+        (ionSlideWillChange)="updateIndicatorPosition()" (ionSlideDidChange)="updateIndicatorPosition()"
+        #SwipedTabsSlider (ionSlideDrag)="animateIndicator($event)">
+        <ion-slide>
+            <ion-list #dynamicList id="dynamicList">
+                <ion-item-sliding>
+                    <ion-item>
+                        <ion-img class="fotosej" src="{{this.url1}}"></ion-img>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-img class="fotosej" src="{{this.url2}}"></ion-img>
+                    </ion-item>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-list #dynamicList id="dynamicList">
+                <ion-item-sliding>
+                    <ion-card class="combos" (click)="abreModal(this.id, this.Combo1)">
+                        <ion-label class="nombreCombo" style="color:rgb(230, 213, 213);">Combo 1</ion-label>
+                    </ion-card>
+                </ion-item-sliding>
+            </ion-list>
+        </ion-slide>
+    </ion-slides>
 </ion-content>

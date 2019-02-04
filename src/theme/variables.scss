@@ -75,3 +75,46 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+.chico{
+  --width: 100%;
+  /* --min-width: auto; */
+  /* --max-width: auto; */
+  --height: 195px;
+  /* --min-height: auto; */
+  /* --max-height: auto; */
+  /* --overflow: hidden; */
+  /* --border-radius: 0; */
+  /* --border-width: 0; */
+  /* --border-style: none; */
+  /* --border-color: transparent; */
+  --background: none;
+  --box-shadow: none;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  contain: strict;
+}
+
+ion-modal{
+  display: block;
+}
+.modal{
+  display:flex !important;
+  // position: relative !important;
+}
+// ion-modal {
+// 	ion-backdrop {
+// 		@media not all and (min-height: 600px) and (min-width: 768px) {
+// 			display: unset;
+// 		}
+// 	}
+// }

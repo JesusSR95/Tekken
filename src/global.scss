@@ -9,3 +9,15 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+ion-header{
+    --ion-background-color:#91221e;
+}
+
+ion-content{
+  --ion-background-color:#5b5959;
+}
+
+ion-title{
+    color: rgb(241, 229, 229);
+}

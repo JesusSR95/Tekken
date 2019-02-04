@@ -5,6 +5,11 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { PersonajePage } from '../personaje/personaje.page';
+import { CombosPage } from '../combos/combos.page';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { setTranslateLoader } from '../app.module';
 
 @NgModule({
   imports: [
@@ -16,8 +21,17 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    HttpClientModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (setTranslateLoader), 
+        deps: [HttpClient]
+      }
+    }),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  entryComponents: [HomePage]
 })
 export class HomePageModule {}

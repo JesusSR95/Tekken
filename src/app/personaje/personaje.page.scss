@@ -1,0 +1,44 @@
+ion-header{
+    --ion-background-color:#91221e;
+}
+
+ion-content{
+  --ion-background-color:#5b5959;
+}
+
+ion-icon{
+    width: 25px;
+    height: 25px;
+    color: rgb(156, 132, 132);
+}
+
+.fotosej{
+width: 250px;
+height: 250px;
+}
+
+.combos{
+    width: 300px;
+    height: 35px;
+}
+
+.perfil{
+    width: 250px;
+    height: 250px;
+    margin-left: 40px;
+}
+
+.nombreCombo{
+    margin-right: 200px;
+}
+
+ion-segment{
+    background-color: #FF4A54;
+    // --indicator-color: black;
+    --indicator-color-checked:#E0E0E0;
+    --color-checked:#E0E0E0;
+}
+
+.corazon{
+    color:rgb(255, 0, 0);
+  }

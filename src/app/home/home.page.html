@@ -1,25 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button style="color:white"></ion-menu-button>
+      <ion-menu-button style="color:rgb(241, 229, 229)"></ion-menu-button>
     </ion-buttons>
-    <ion-title style="color:white">
-      Personajes
+    <ion-title>
+     {{"characters"|translate}}
     </ion-title>
+    <ion-searchbar #searchBar id="searchBar" showCancelButton cancelButtonText="Cancelar" placeholder="Buscar"
+    (ionInput)="getInitializeItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Arrastra para refrescar" refreshingSpinner="crescent"
-        refreshingText="Cargando...">
-    </ion-refresher-content>
-</ion-refresher>
   <ion-card *ngFor="let item of listadoPanel;let i = index">
-    <ion-item >
+    <ion-item (click)="abreModal(item.id, item.Nombre, item.Foto, item.Descripcion, item.Combo1, item.url1, item.url2)">
       <ion-img src="{{item.Foto}}"></ion-img>
-      <ion-label style="color:white">{{item.Nombre}}</ion-label>
-      <ion-item-option>Ver combos</ion-item-option>
+      <ion-label style="color: rgb(230, 213, 213);">{{item.Nombre}}</ion-label>
     </ion-item>
   </ion-card>
 </ion-content>

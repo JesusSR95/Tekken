@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -7,10 +7,9 @@
       Login
     </ion-title>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> -->
 <ion-content padding>
-  <ion-img src="./assets/tekken-logo.png"></ion-img>
-  <ion-img src="./assets/jin.gif"></ion-img>
-  <ion-button expand="block" color="danger" (click)="doGoogleLogin()">Iniciar sesion con Google</ion-button>
+  <ion-img class="logo" src="./assets/tekken-logo.png"></ion-img>
+  <ion-img class="gifLogin" src="./assets/jin.gif"></ion-img>
+  <ion-button expand="block" color="danger" (click)="doGoogleLogin()">{{"login"|translate}}</ion-button>
 </ion-content>

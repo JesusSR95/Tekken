@@ -13,7 +13,9 @@ export const environment = {
     storageBucket: "tekken-392f3.appspot.com",
     messagingSenderId: "582171784232",
     personajesColeccion: "personajes"
-  }
+  },
+  currentLanguages: ['es', 'en'],
+  defaultLanguage: "es"
 };
 
 /*
