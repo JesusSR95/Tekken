@@ -77,7 +77,7 @@ export class AppComponent {
       .then(res => {
         //user logged out so we will remove him from the NativeStorage
         this.nativeStorage.remove('google_user');
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       });

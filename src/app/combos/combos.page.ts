@@ -28,6 +28,7 @@ export class CombosPage implements OnInit {
   ngOnInit() {
   }
 
+  //Al pulsar fuera del modal desaparecerá
   dismiss() {
     this.modalcontroller.dismiss();
   }

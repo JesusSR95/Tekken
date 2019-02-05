@@ -54,41 +54,24 @@ export class HomePage implements OnInit {
   }
 
   /* Analizar el ciclo de vida de los componentes: justo cuando se hace activa */
+  //Al entrar en home nos cargará todos los personajes almacenados de la base de datos
   ionViewDidEnter() {
     this.presentLoading("Cargando");
     this.todoS.leePersonaje().then((querySnapshot) => {
       this.listado = [];
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        //console.log(doc.id, " => ", doc.data());
         this.listado.push({ id: doc.id, ...doc.data() });
       });
-      //console.log(this.listado);
       this.listadoPanel = this.listado;
       this.loadingController.dismiss();
     });
   }
-  /* Esta función es llamada por el componente Refresher de IONIC v4 */
-  // doRefresh(refresher) {
-  //   this.todoS.leePersonaje()
-  //     .then(querySnapshot => {
-  //       this.listado = [];
-  //       this.delete();
-  //       querySnapshot.forEach((doc) => {
-  //         this.listado.push({ id: doc.id, ...doc.data() });
-  //       });
-  //       this.listadoPanel = this.listado;
-  //       //llamamos al metodo initializeItem para que recargue 
-  //       //el arraylist con los elementos a buscar
-  //       this.initializeItems();
-  //       refresher.target.complete();
-  //     });
-  // }
 
   async delete() { //para solucionar el tema de list-items-sliding con ngfor
     await this.dynamicList.closeSlidingItems();
   }
 
+  //Metodo que muestra el cargando
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg
@@ -100,6 +83,7 @@ export class HomePage implements OnInit {
     this.listadoPanel = this.listado;
   }
 
+  //Obtenemos los personajes de la base de datos
   getItems(ev: any) {
     this.initializeItems();
     let val = ev.target.value;
@@ -111,7 +95,6 @@ export class HomePage implements OnInit {
   }
 
   actualizarPage() {
-
     this.todoS.leePersonaje().then((querySnapshot) => {
       this.listado = [];
       querySnapshot.forEach((doc) => {
@@ -126,11 +109,8 @@ export class HomePage implements OnInit {
   getInitializeItems(ev: any) {
     // resetea todos los items y pone el array de nuevo con todos los elementos
     this.initializeItems();
-
-
     // Establece el valor del search bar
     const val = ev.target.value;
-
     // si esl valor esta vacio no filtra 
     if (val && val.trim() != '') {
       this.listadoPanel = this.listado.filter((item) => {
@@ -140,15 +120,16 @@ export class HomePage implements OnInit {
     }
   }
 
+  //Abrimos el modal y nos llevamos los datos que tiene dentro el metodo al modal
   async presentModal(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any) {
     const modal = await this.modalController.create({
       component: PersonajePage,
-      // backdropDismiss:false,
       componentProps: { id: id, Nombre: Nombre, Foto: Foto, Descripcion: Descripcion, Combo1: Combo1, url1: url1, url2: url2 }
     });
     return await modal.present();
   }
 
+  //Metodo para abrir el modal y que al pulsar el card vibre
   abreModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2) {
     this.vibration.vibrate(50);
     this.presentModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2)

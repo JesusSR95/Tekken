@@ -51,13 +51,22 @@ export class PersonajePage implements OnInit {
     this.color = "#8d8887";
   }
 
-  ionViewDidEnter() {
-    this.SwipedTabsIndicator = document.getElementById("indicator");
-}
-
   ngOnInit() {
+    if (this.favorito == true) {
+      this.color = "#DD2C00";
+
+    } else {
+      this.color = "#8d8887";
+
+    }
   }
 
+  ionViewDidEnter() {
+    this.SwipedTabsIndicator = document.getElementById("indicator");
+  }
+
+
+  //Al pulsar fuera del modal desaparecerá
   dismiss() {
     this.modalcontroller.dismiss();
   }
@@ -69,6 +78,8 @@ export class PersonajePage implements OnInit {
     return await myloading.present();
   }
 
+  //Al pulsar el combo nos aparecerá un modal que mostrará el combo en un gif
+  //en cssClass nos muestra el css de este modal.
   async abreModal(id: any, Combo1: any) {
     const modal = await this.modalcontroller.create({
       component: CombosPage,
@@ -79,10 +90,11 @@ export class PersonajePage implements OnInit {
     return await modal.present();
   }
 
-  getColor(){
+  getColor() {
     return this.color;
   }
 
+  //Actualiza el segment al cambiar de posicion
   updateCat(cat: Promise<any>) {
     cat.then(dat => {
       this.category = dat;
@@ -90,6 +102,7 @@ export class PersonajePage implements OnInit {
     });
   }
 
+  //Acutaliza el indicador de posicion del segment
   updateIndicatorPosition() {
     this.SwipedTabsSlider.getActiveIndex().then(i => {
       if (this.ntabs > i) {  // this condition is to avoid passing to incorrect index
@@ -98,16 +111,19 @@ export class PersonajePage implements OnInit {
     });
   }
 
+  //Es la animacion del indicador del segment que es lo que nos indica en que parte estamos
   animateIndicator(e) {
     //console.log(e.target.swiper.progress);
     if (this.SwipedTabsIndicator)
       this.SwipedTabsIndicator.style.webkitTransform = 'translate3d(' +
         ((e.target.swiper.progress * (this.ntabs - 1)) * 100) + '%,0,0)';
   }
-  
+
+  //En este metodo al pulsar el corazon este cambiara el personaje a favorito y mostrar el carzon en rojo
+  // y nos mostrará un toast con el mensaje que tenemos guardado en la traduccion
   async presentToast() {
     this.favorito = !this.favorito;
-    this.color = "#DD2C00"
+    this.color = "#DD2C00";
     this.todoS.updateFavorito(this.id);
     const toast = await this.toastController.create({
       message: this.translate.instant("toast"),
@@ -116,10 +132,13 @@ export class PersonajePage implements OnInit {
     toast.present();
   }
 
+  //En este metodo consiste que al pulsar la basura nos aparecera y preguntará que si estamos seguros
+  //De quitar el personaje de favoritos si aceptamos la base de datos se actualiza y quitara
+  //el personaje de favoritos.
   async presentAlertConfirm(id: any) {
     const alert = await this.alertController.create({
       header: this.Nombre,
-      message:this.translate.instant("alerta"),
+      message: this.translate.instant("alerta"),
       buttons: [
         {
           text: this.translate.instant("cancelar"),
@@ -129,7 +148,7 @@ export class PersonajePage implements OnInit {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text:this.translate.instant("eliminar"),
+          text: this.translate.instant("eliminar"),
           handler: () => {
             this.favorito = !this.favorito;
             this.todoS.deleteFavorito(this.id);

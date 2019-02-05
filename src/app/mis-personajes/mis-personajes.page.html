@@ -16,7 +16,7 @@
         </ion-refresher-content>
       </ion-refresher>
   <ion-card *ngFor="let item of listadoPanel;let i = index">
-    <ion-item (click)="modalFav(item.id, item.Nombre, item.Foto, item.Descripcion, item.Combo1, item.url1, item.url2, item.favorito)">
+    <ion-item (click)="abreModalFav(item.id, item.Nombre, item.Foto, item.Descripcion, item.Combo1, item.url1, item.url2, item.favorito)">
       <ion-img src="{{item.Foto}}"></ion-img>
       <ion-label style="color:rgb(230, 213, 213)">{{item.Nombre}}</ion-label>
     </ion-item>

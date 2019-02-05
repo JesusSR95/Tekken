@@ -16,7 +16,6 @@ export class MisPersonajesPage implements OnInit {
   listadoPanel = [];
 
   private color;
-
   constructor(
     private todoS: PersonajesService,
     public loadingController: LoadingController,
@@ -26,9 +25,10 @@ export class MisPersonajesPage implements OnInit {
 
   ) {
     this.initializeItems();
-    this.color = "#8d8887";
+    this.color= "#DD2C00";
   }
 
+  //Cargarmos los peronsajes que tenemos añadidos en favoritos
   ngOnInit() {
     this.cargarPersonajesFavoritos();
   }
@@ -37,6 +37,7 @@ export class MisPersonajesPage implements OnInit {
     this.listadoPanel = this.listado;
   }
 
+  //Mostramos los personajes despues de cargarlos de la base de datos
   cargarPersonajesFavoritos() {
     this.presentLoading("Cargando");
     this.todoS.obtenerFavoritos().then((querySnapshot) => {
@@ -53,6 +54,7 @@ export class MisPersonajesPage implements OnInit {
     });
   }
 
+  //Refrescamos la pagina para ver si hemos borrado o añadido un personaje nuevo
     doRefresh(refresher) {
     this.todoS.obtenerFavoritos()
       .then(querySnapshot => {
@@ -68,10 +70,6 @@ export class MisPersonajesPage implements OnInit {
       });
   }
 
-  getColor(){
-    return this.color;
-  }
-
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg
@@ -79,6 +77,7 @@ export class MisPersonajesPage implements OnInit {
     return await myloading.present();
   }
 
+//Al pulsar el card nos mostrara la informacion del personaje. Recogemos los datos que vamos a mostrar en elmodal
   async modalFav(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any, favorito:true) {
     const modal = await this.modalController.create({
       component: PersonajePage,
@@ -88,4 +87,8 @@ export class MisPersonajesPage implements OnInit {
     return await modal.present();
   }
 
+  abreModalFav(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito) {
+    this.vibration.vibrate(50);
+    this.modalFav(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito)
+  }
 }

@@ -25,6 +25,8 @@ export class LoginPage {
     translate.setDefaultLang("es")
   }
 
+  // Inicio de sesion con Google al pulsar el boton inicia del metodo y muestra los correos de google
+  // que tenga el movil guardado elegimos el correo que queremos usar y nos llevara al home de la app
   async doGoogleLogin() {
     const loading = await this.loadingController.create({
       message: 'Please wait...'
@@ -57,6 +59,8 @@ export class LoginPage {
       })
   }
 
+  //Este metodo indica que no podemos utilizar el inicio de sesion con google con el ordenador 
+  //tendremos que utilizar el movil para que funcione
   async presentAlert() {
     const alert = await this.alertController.create({
       message: 'Cordova is not available on desktop. Please try this in a real device or in an emulator.',
@@ -66,7 +70,7 @@ export class LoginPage {
     await alert.present();
   }
 
-
+  //Nos muestra el cargando al entrar en la app
   async presentLoading(loading) {
     return await loading.present();
   }
