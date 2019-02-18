@@ -14,8 +14,16 @@ export class MisPersonajesPage implements OnInit {
 
   listado = [];
   listadoPanel = [];
-
   private color;
+
+  /**
+   * 
+   * @param todoS 
+   * @param loadingController 
+   * @param modalController 
+   * @param vibration 
+   * @param translate 
+   */
   constructor(
     private todoS: PersonajesService,
     public loadingController: LoadingController,
@@ -54,7 +62,11 @@ export class MisPersonajesPage implements OnInit {
     });
   }
 
-  //Refrescamos la pagina para ver si hemos borrado o añadido un personaje nuevo
+  /**
+   * 
+   * @param refresher 
+   * Refrescamos la pagina para ver si hemos borrado o añadido un personaje nuevo
+   */
     doRefresh(refresher) {
     this.todoS.obtenerFavoritos()
       .then(querySnapshot => {
@@ -77,7 +89,19 @@ export class MisPersonajesPage implements OnInit {
     return await myloading.present();
   }
 
-//Al pulsar el card nos mostrara la informacion del personaje. Recogemos los datos que vamos a mostrar en elmodal
+
+  /**
+   * 
+   * @param id 
+   * @param Nombre 
+   * @param Foto 
+   * @param Descripcion 
+   * @param Combo1 
+   * @param url1 
+   * @param url2 
+   * @param favorito 
+   * Al pulsar el card nos mostrara la informacion del personaje. Recogemos los datos que vamos a mostrar en elmodal
+   */
   async modalFav(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any, favorito:true) {
     const modal = await this.modalController.create({
       component: PersonajePage,
@@ -87,6 +111,18 @@ export class MisPersonajesPage implements OnInit {
     return await modal.present();
   }
 
+  /**
+   * 
+   * @param id 
+   * @param Nombre 
+   * @param Foto 
+   * @param Descripcion 
+   * @param Combo1 
+   * @param url1 
+   * @param url2 
+   * @param favorito 
+   * Metodo para abrir el modal y que al pulsar el card vibre
+   */
   abreModalFav(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito) {
     this.vibration.vibrate(50);
     this.modalFav(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito)

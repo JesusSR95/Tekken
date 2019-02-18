@@ -13,6 +13,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LoginPage {
 
+  /**
+   * 
+   * @param googlePlus 
+   * @param nativeStorage 
+   * @param loadingController 
+   * @param router 
+   * @param platform 
+   * @param alertController 
+   * @param translate 
+   */
   constructor(
     private googlePlus: GooglePlus,
     private nativeStorage: NativeStorage,
@@ -70,7 +80,11 @@ export class LoginPage {
     await alert.present();
   }
 
-  //Nos muestra el cargando al entrar en la app
+  /**
+   * 
+   * @param loading 
+   * Nos muestra el cargando al entrar en la app
+   */
   async presentLoading(loading) {
     return await loading.present();
   }

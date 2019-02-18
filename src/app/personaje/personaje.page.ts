@@ -30,6 +30,17 @@ export class PersonajePage implements OnInit {
 
   private color;
 
+  /**
+   * 
+   * @param todoS 
+   * @param loadingController 
+   * @param toastController 
+   * @param alertController 
+   * @param translate 
+   * @param router 
+   * @param modalcontroller 
+   * @param navparams 
+   */
   constructor(private todoS: PersonajesService,
     public loadingController: LoadingController,
     private toastController: ToastController,
@@ -71,6 +82,11 @@ export class PersonajePage implements OnInit {
     this.modalcontroller.dismiss();
   }
 
+  /**
+   * 
+   * @param msg 
+   * Carga de personajes
+   */
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg
@@ -78,8 +94,13 @@ export class PersonajePage implements OnInit {
     return await myloading.present();
   }
 
-  //Al pulsar el combo nos aparecerá un modal que mostrará el combo en un gif
-  //en cssClass nos muestra el css de este modal.
+  /**
+   * 
+   * @param id 
+   * @param Combo1 
+   * Al pulsar el combo nos aparecerá un modal que mostrará el combo en un gif
+   * en cssClass nos muestra el css de este modal.
+   */
   async abreModal(id: any, Combo1: any) {
     const modal = await this.modalcontroller.create({
       component: CombosPage,
@@ -94,15 +115,19 @@ export class PersonajePage implements OnInit {
     return this.color;
   }
 
-  //Actualiza el segment al cambiar de posicion
+  /**
+   * 
+   * @param cat 
+   * Actualiza el segment al cambiar de posicion
+   */
   updateCat(cat: Promise<any>) {
     cat.then(dat => {
       this.category = dat;
       this.category = +this.category; //to int;
     });
   }
-
-  //Acutaliza el indicador de posicion del segment
+  
+  // Acutaliza el indicador de posicion del segment
   updateIndicatorPosition() {
     this.SwipedTabsSlider.getActiveIndex().then(i => {
       if (this.ntabs > i) {  // this condition is to avoid passing to incorrect index
@@ -111,7 +136,11 @@ export class PersonajePage implements OnInit {
     });
   }
 
-  //Es la animacion del indicador del segment que es lo que nos indica en que parte estamos
+/**
+ * 
+ * @param e 
+ * Es la animacion del indicador del segment que es lo que nos indica en que parte estamos
+ */
   animateIndicator(e) {
     //console.log(e.target.swiper.progress);
     if (this.SwipedTabsIndicator)
@@ -132,9 +161,13 @@ export class PersonajePage implements OnInit {
     toast.present();
   }
 
-  //En este metodo consiste que al pulsar la basura nos aparecera y preguntará que si estamos seguros
-  //De quitar el personaje de favoritos si aceptamos la base de datos se actualiza y quitara
-  //el personaje de favoritos.
+  /**
+   * 
+   * @param id 
+   * En este metodo consiste que al pulsar la basura nos aparecera y preguntará que si estamos seguros
+   * De quitar el personaje de favoritos si aceptamos la base de datos se actualiza y quitara
+   *  el personaje de favoritos.
+   */
   async presentAlertConfirm(id: any) {
     const alert = await this.alertController.create({
       header: this.Nombre,

@@ -20,6 +20,16 @@ export class HomePage implements OnInit {
   listado = [];
   listadoPanel = [];
 
+  /**
+   * 
+   * @param todoS 
+   * @param nativeStorage 
+   * @param loadingController 
+   * @param router 
+   * @param modalController 
+   * @param translate 
+   * @param vibration 
+   */
   constructor(
     private todoS: PersonajesService,
     private nativeStorage: NativeStorage,
@@ -71,7 +81,12 @@ export class HomePage implements OnInit {
     await this.dynamicList.closeSlidingItems();
   }
 
-  //Metodo que muestra el cargando
+
+  /**
+   * 
+   * @param msg 
+   * Metodo que muestra el cargando
+   */
   async presentLoading(msg) {
     let myloading = await this.loadingController.create({
       message: msg
@@ -83,7 +98,11 @@ export class HomePage implements OnInit {
     this.listadoPanel = this.listado;
   }
 
-  //Obtenemos los personajes de la base de datos
+  /**
+   * 
+   * @param ev 
+   * Obtenemos los personajes de la base de datos
+   */
   getItems(ev: any) {
     this.initializeItems();
     let val = ev.target.value;
@@ -105,9 +124,13 @@ export class HomePage implements OnInit {
       this.loadingController.dismiss();
     });
   }
-
+ç
+/**
+ * 
+ * @param ev 
+ * resetea todos los items y pone el array de nuevo con todos los elementos
+ */
   getInitializeItems(ev: any) {
-    // resetea todos los items y pone el array de nuevo con todos los elementos
     this.initializeItems();
     // Establece el valor del search bar
     const val = ev.target.value;
@@ -120,7 +143,17 @@ export class HomePage implements OnInit {
     }
   }
 
-  //Abrimos el modal y nos llevamos los datos que tiene dentro el metodo al modal
+  /**
+   * 
+   * @param id 
+   * @param Nombre 
+   * @param Foto 
+   * @param Descripcion 
+   * @param Combo1 
+   * @param url1 
+   * @param url2 
+   * Abrimos el modal y nos llevamos los datos que tiene dentro el metodo al modal
+   */
   async presentModal(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any) {
     const modal = await this.modalController.create({
       component: PersonajePage,
@@ -129,7 +162,17 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  //Metodo para abrir el modal y que al pulsar el card vibre
+  /**
+   * 
+   * @param id 
+   * @param Nombre 
+   * @param Foto 
+   * @param Descripcion 
+   * @param Combo1 
+   * @param url1 
+   * @param url2 
+   * Metodo para abrir el modal y que al pulsar el card vibre
+   */
   abreModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2) {
     this.vibration.vibrate(50);
     this.presentModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2)

@@ -14,6 +14,15 @@ export class CombosPage implements OnInit {
   id: any;
   Combo1: any;
 
+  /**
+   * 
+   * @param todoS 
+   * @param loadingController 
+   * @param alertController 
+   * @param router 
+   * @param modalcontroller 
+   * @param navparams 
+   */
   constructor(private todoS: PersonajesService,
     public loadingController: LoadingController,
     public alertController: AlertController,
