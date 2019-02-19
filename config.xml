@@ -86,7 +86,7 @@
         <variable name="REVERSED_CLIENT_ID" value="com.jesus.tekken" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
-    <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <plugin name="cordova-plugin-vibration" spec="3.1.0" />
+    <plugin name="cordova-plugin-nativestorage" spec="2.3.2" />
     <engine name="android" spec="7.1.4" />
 </widget>

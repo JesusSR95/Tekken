@@ -29,8 +29,7 @@ export class MisPersonajesPage implements OnInit {
     public loadingController: LoadingController,
     public modalController: ModalController,
     private vibration: Vibration,
-    private translate: TranslateService,
-
+    private translate: TranslateService
   ) {
     this.initializeItems();
     this.color= "#DD2C00";

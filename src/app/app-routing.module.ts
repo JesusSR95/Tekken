@@ -8,26 +8,28 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  { 
-    path: 'login', 
-    loadChildren: './autentication/login/login.module#LoginPageModule' 
-  },
-
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
-  
+
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
 
-  { 
-    path: 'mis-personajes', 
-    loadChildren: './mis-personajes/mis-personajes.module#MisPersonajesPageModule' 
+  {
+    path: 'mis-personajes',
+    loadChildren: './mis-personajes/mis-personajes.module#MisPersonajesPageModule'
   },
+
+  {
+    path: 'login',
+    loadChildren: './autentication/login/login.module#LoginPageModule'
+  },
+
   { path: 'personaje', loadChildren: './personaje/personaje.module#PersonajePageModule' },
+  
   { path: 'combos', loadChildren: './combos/combos.module#CombosPageModule' }
 ];
 
@@ -35,4 +37,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -6,6 +6,7 @@ import { PersonajesService } from '../servicios/personajes.service';
 import { PersonajePage } from '../personaje/personaje.page';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,8 @@ export class HomePage implements OnInit {
     private router: Router,
     public modalController: ModalController,
     private translate: TranslateService,
-    private vibration: Vibration
+    private vibration: Vibration,
+    private menu: MenuController
   ) {
     this.initializeItems();
     translate.setDefaultLang("es")
@@ -66,6 +68,7 @@ export class HomePage implements OnInit {
   /* Analizar el ciclo de vida de los componentes: justo cuando se hace activa */
   //Al entrar en home nos cargará todos los personajes almacenados de la base de datos
   ionViewDidEnter() {
+    this.menu.enable(true);
     this.presentLoading("Cargando");
     this.todoS.leePersonaje().then((querySnapshot) => {
       this.listado = [];
@@ -154,10 +157,10 @@ export class HomePage implements OnInit {
    * @param url2 
    * Abrimos el modal y nos llevamos los datos que tiene dentro el metodo al modal
    */
-  async presentModal(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any) {
+  async presentModal(id: any, Nombre: any, Foto: any, Descripcion: any, Combo1: any, url1: any, url2: any, favorito: any) {
     const modal = await this.modalController.create({
       component: PersonajePage,
-      componentProps: { id: id, Nombre: Nombre, Foto: Foto, Descripcion: Descripcion, Combo1: Combo1, url1: url1, url2: url2 }
+      componentProps: { id: id, Nombre: Nombre, Foto: Foto, Descripcion: Descripcion, Combo1: Combo1, url1: url1, url2: url2, favorito: favorito}
     });
     return await modal.present();
   }
@@ -173,9 +176,9 @@ export class HomePage implements OnInit {
    * @param url2 
    * Metodo para abrir el modal y que al pulsar el card vibre
    */
-  abreModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2) {
+  abreModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito) {
     this.vibration.vibrate(50);
-    this.presentModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2)
+    this.presentModal(id, Nombre, Foto, Descripcion, Combo1, url1, url2, favorito)
   }
 
 }

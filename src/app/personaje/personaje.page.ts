@@ -65,17 +65,14 @@ export class PersonajePage implements OnInit {
   ngOnInit() {
     if (this.favorito == true) {
       this.color = "#DD2C00";
-
     } else {
       this.color = "#8d8887";
-
     }
   }
 
   ionViewDidEnter() {
     this.SwipedTabsIndicator = document.getElementById("indicator");
   }
-
 
   //Al pulsar fuera del modal desaparecerá
   dismiss() {
@@ -156,7 +153,7 @@ export class PersonajePage implements OnInit {
     this.todoS.updateFavorito(this.id);
     const toast = await this.toastController.create({
       message: this.translate.instant("toast"),
-      duration: 2000
+      duration: 1000
     });
     toast.present();
   }
@@ -166,7 +163,7 @@ export class PersonajePage implements OnInit {
    * @param id 
    * En este metodo consiste que al pulsar la basura nos aparecera y preguntará que si estamos seguros
    * De quitar el personaje de favoritos si aceptamos la base de datos se actualiza y quitara
-   *  el personaje de favoritos.
+   * el personaje de favoritos.
    */
   async presentAlertConfirm(id: any) {
     const alert = await this.alertController.create({

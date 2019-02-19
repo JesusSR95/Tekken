@@ -5,6 +5,8 @@ import { LoadingController, AlertController, Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { environment } from './../../../environments/environment';
 import { TranslateService } from '@ngx-translate/core';
+import { MenuController } from '@ionic/angular';
+import { shouldCallLifecycleInitHook } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,8 @@ export class LoginPage {
     private router: Router,
     private platform: Platform,
     public alertController: AlertController,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private menu: MenuController
   ) {
     translate.setDefaultLang("es")
   }
@@ -87,6 +90,10 @@ export class LoginPage {
    */
   async presentLoading(loading) {
     return await loading.present();
+  }
+
+  ionViewDidEnter(){
+    this.menu.enable(false);
   }
 
 }

@@ -17,11 +17,7 @@ export class AppComponent {
 
   langmenu: any;
   public appPages = [
-    // {
-    //   title: 'Login',
-    //   url: '/login',
-    //   icon: 'home'
-    // },
+
     {
       title: 'home',
       url: '/home',
@@ -31,7 +27,12 @@ export class AppComponent {
       title: 'fav',
       url: '/mis-personajes',
       icon: 'heart'
-    }
+    },
+    {
+      title: 'logout',
+      url: '/login',
+      icon: 'log-out'
+    },
   ];
 
   constructor(
@@ -72,16 +73,16 @@ export class AppComponent {
     });
   }
 
-  doGoogleLogout() {
-    this.googlePlus.logout()
-      .then(res => {
-        //user logged out so we will remove him from the NativeStorage
-        this.nativeStorage.remove('google_user');
-        this.router.navigate(['/login']);
-      }, err => {
-        console.log(err);
-      });
-  }
+  // doGoogleLogout() {
+  //   this.googlePlus.logout()
+  //     .then(res => {
+  //       //user logged out so we will remove him from the NativeStorage
+  //       this.nativeStorage.remove('google_user');
+  //       this.router.navigate(['/login']);
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  // }
 
   changeLang(e) {
     //console.log(e.detail.checked);
