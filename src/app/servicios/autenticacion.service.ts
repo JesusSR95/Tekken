@@ -7,6 +7,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class AutenticacionService {
 
+  /**
+   * 
+   * @param autService 
+   * @param afAuth 
+   * @param activatedRouter 
+   */
   constructor(public autService: AutenticacionService,
     public afAuth: AngularFireAuth,
     private activatedRouter: ActivatedRoute) { }

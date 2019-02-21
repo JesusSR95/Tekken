@@ -35,6 +35,16 @@ export class AppComponent {
     },
   ];
 
+  /**
+   * 
+   * @param platform 
+   * @param splashScreen 
+   * @param googlePlus 
+   * @param translate 
+   * @param statusBar 
+   * @param nativeStorage 
+   * @param router 
+   */
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -73,19 +83,11 @@ export class AppComponent {
     });
   }
 
-  // doGoogleLogout() {
-  //   this.googlePlus.logout()
-  //     .then(res => {
-  //       //user logged out so we will remove him from the NativeStorage
-  //       this.nativeStorage.remove('google_user');
-  //       this.router.navigate(['/login']);
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  // }
-
+  /**
+   * 
+   * @param e 
+   */
   changeLang(e) {
-    //console.log(e.detail.checked);
     if (e.detail.checked) {
       this.translate.use("en");
     } else {

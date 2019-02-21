@@ -17,6 +17,14 @@ export class CpersonajeComponent implements OnInit {
   Descripcion: any;
   Combo1: any;
 
+  /**
+   * 
+   * @param todoS 
+   * @param loadingController 
+   * @param router 
+   * @param modalcontroller 
+   * @param navparams 
+   */
   constructor(private todoS: PersonajesService,
     public loadingController: LoadingController,
     private router: Router,

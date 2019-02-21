@@ -10,6 +10,10 @@ export class PersonajesService {
   miPersonaje: any;
   esFavorito: boolean;
 
+  /**
+   * 
+   * @param fireStore 
+   */
   constructor(private fireStore: AngularFirestore) {
     this.miPersonaje = fireStore.collection<any>(environment.firebaseConfig.personajesColeccion)
   }
