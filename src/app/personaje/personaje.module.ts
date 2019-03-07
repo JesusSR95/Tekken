@@ -32,6 +32,6 @@ const routes: Routes = [
       }
     }),
   ],
-  declarations: [PersonajePage]
+  declarations: [/*PersonajePage*/]
 })
 export class PersonajePageModule {}

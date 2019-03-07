@@ -14,7 +14,6 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { CpersonajeComponent } from './cpersonaje/cpersonaje.component';
 import { PersonajePage } from './personaje/personaje.page';
 import { Vibration } from '@ionic-native/vibration/ngx';
 import { CombosPage } from './combos/combos.page';
@@ -22,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateService, TranslateStore, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 export function setTranslateLoader(http: any) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -41,6 +41,7 @@ export function setTranslateLoader(http: any) {
         useFactory: (setTranslateLoader), deps: [HttpClient]
       }
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,
